@@ -22,6 +22,9 @@
 // jane.Birthear=1969;
 // jane['lastname']="Smith"
 
+/* ************************************* */
+
+
 //*****Objects and methods*/
 
 // var john = {
@@ -62,6 +65,8 @@ for(var i=0;i<john.length;i++){
 }
 */
 
+/* ************************************* */
+
 /*
 //function constructor //PROTOTYPE
 var john = {
@@ -99,6 +104,8 @@ console.log(mark.lastName);
 
 */
 
+/* ************************************* */
+
 /*
 
 //Object.create method
@@ -121,6 +128,9 @@ var jane=Object.create(personProto,
     
     });
 */
+
+/* ************************************* */
+
 
 /*
 //Premitives And Objects
@@ -161,6 +171,9 @@ console.log(age);
 console.log(obj.city); 
 */
 
+/* ************************************* */
+
+/*
 //Passing functions as arguments
 
 var years=[1990,2006,1997,1998,1991];
@@ -196,3 +209,57 @@ var rates = arrayCalc(ages,maxHeartRate)
 console.log(ages);
 console.log(fullAges);
 console.log(rates);
+
+*/
+
+/* ******************************** */
+
+/*
+//Functions returning functions
+
+function interviewQuestion(job){
+    if (job === 'designer'){
+       return function(name){     //returning functions
+            console.log(name+',what is blah??');
+       }
+    } else if (job==='teacher'){
+        return function(name){
+            console.log('What subject do you teach?,'+name);
+        }
+    } else{
+        return function(name){
+            console.log('Hello'+name+',What do you do?')
+        }
+    }
+}
+
+var teacherQestion = interviewQuestion('teacher');
+var designerQuestion = interviewQuestion('designer');
+
+teacherQestion('John');
+designerQuestion('John');
+designerQuestion('Mark');
+designerQuestion('Mary');
+
+interviewQuestion('teacher')('Mark');//function calling with two arguments
+*/
+
+/* ************************************* */
+
+//Imeditaly Invoked Function Expression (IIFE)
+
+// function game(){
+//     var score=Math.random()*10;
+//     console.log(score>=5);
+// }
+// game();
+
+(function(){                        //IIFE
+    var score=Math.random()*10;
+    console.log(score>=5);
+})();
+ 
+(function(goodLuck){                        //IIFE
+    var score=Math.random()*10;
+    console.log(score>=5 -goodLuck);
+})(5);//passing argument into function
