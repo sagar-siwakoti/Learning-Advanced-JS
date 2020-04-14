@@ -268,6 +268,7 @@ interviewQuestion('teacher')('Mark');//function calling with two arguments
 
 /* ************************************* */
 
+/*
 //Closures  (V.Imp)
 
 function retirement(retirementAge){
@@ -312,3 +313,32 @@ function interviewQuestion(job){
 }
 
 interviewQuestion('teacher')('john');
+
+*/
+
+/* ************************************* */
+
+//Bind,Call and apply
+
+var john={
+    name:'john',
+    age:26,
+    job:'teacher',
+    presentation:function(style,timeOfDay){
+        if (style==='formal'){
+            console.log('Good'+timeOfDay+',ladies and gentleman! I\'m '+this.name+',I\'m '+this.job+' and I\'m '+this.age + ' years old.');
+        }else if(style==='friendly'){
+            console.log('hey! What\'s up? I\'m '+this.name+',I\'m '+this.job+' and I\'m '+this.age + ' years old. Have a nice '+timeOfDay+'.');
+        }
+    }
+};
+
+var emily={
+    name:'Emily',
+    age:35,
+    job:'designer'
+};
+john.presentation('formal','morning');
+john.presentation.call(emily,'friendly','afternoon');//call method
+//john.presentation.apply(emily,'friendly','afternoon');
+ 
