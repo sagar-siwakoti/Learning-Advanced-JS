@@ -341,4 +341,34 @@ var emily={
 john.presentation('formal','morning');
 john.presentation.call(emily,'friendly','afternoon');//call method
 //john.presentation.apply(emily,'friendly','afternoon');
- 
+ //bind method
+var johnFriendly=john.presentation.bind(john,'friendly');
+
+johnFriendly('morning'); //this is called carrying
+johnFriendly('night');   //carrying is a technique in which we create a function based on another function ,but with some preset parameters .Bind is extemly useful for this.
+
+var emilyFormal = john.presentation.bind(emily,'formal');
+emilyFormal('afternoon'); 
+//another reallife example
+var years=[1990,2006,1997,1998,1991];
+
+function arrayCalc(arr,fn){
+    var arrRes = [];
+    for (var i= 0; i < arr.length;i++){
+        arrRes.push(fn(arr[i]));
+    }
+    return arrRes;
+}
+
+function calculateAge(el){
+    return 2020- el;
+}
+
+function isFullAge(limit, el){
+    return el>=limit;
+}
+var ages=arrayCalc(years,calculateAge);
+var fullJapan=arrayCalc(ages,isFullAge.bind(this,20));
+console.log(ages);
+console.log(fullJapan);
+
